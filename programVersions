@@ -9,7 +9,7 @@
     ["Package"]="Outraged Security .INC",
   },
   ["client"]={
-    ["GitURL"]="darksecurity/client.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/darksecurity/client.lua",
     ["Version"]=4.26,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC  Client",
