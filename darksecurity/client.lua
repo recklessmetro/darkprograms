@@ -12,7 +12,7 @@ if fs.exists("dark") == false then -- load darkAPI
   print("Missing OSI API")
   sleep(2)
   print("Attempting to download...")
-  status, getGit = pcall(http.get,"https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/api/dark.lua")
+  status, getGit = pcall(http.get,"https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/api/dark.lua")
   if not status then
     print("\nFailed to get OSI API")
     print("Error: ".. getGit)
