@@ -1,6 +1,6 @@
 {
   ["server"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/darksecurity/server.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/darksecurity/server.lua",
     ["Version"]=6.37,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC Server",
@@ -9,7 +9,7 @@
     ["Package"]="Outraged Security .INC",
   },
   ["client"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/darksecurity/client.lua",
+    ["GitURL"]="darksecurity/client.lua",
     ["Version"]=4.26,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC  Client",
@@ -18,7 +18,7 @@
     ["Package"]="Outraged Security .INC",
   }, 
 ["Chat_Client"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/darksecurity/chat_client.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/chat_client.lua",
     ["Version"]=4.26,
     ["Type"]="program",
     ["Name"]="Chat Client",
@@ -27,7 +27,7 @@
     ["Package"]="Chat",
   },  
 ["chat_server"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/darksecurity/chat_server.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/chat_server.lua",
     ["Version"]=4.26,
     ["Type"]="program",
     ["Name"]="Chat Server",
@@ -36,7 +36,7 @@
     ["Package"]="Chat",
   },  
 ["Chat_Client"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/darksecurity/chat_client.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/chat_client.lua",
     ["Version"]=4.26,
     ["Type"]="program",
     ["Name"]="Chat Relay",
@@ -54,7 +54,7 @@
     ["Package"]="Standalone",
    },
 ["Axiom"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/chatgpt",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/chatgpt",
     ["Version"]=1.0,
     ["Type"]="program",
     ["Name"]="Chat GPT In computercraft",
@@ -63,7 +63,7 @@
     ["Package"]="Standalone",
    },
    ["MetroOS"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/MetroOS/MetroOS",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/MetroOS/MetroOS",
     ["Version"]=2.94,
     ["Type"]="program",
     ["Name"]="Metro Secure OS Downloader",
@@ -81,7 +81,7 @@
     ["Package"]="Standalone",
    },
   ["dark"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/api/dark.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/api/dark.lua",
     ["Version"]=3.25,
     ["Type"]="api",
     ["Name"]="Outraged Security .INC  API",
@@ -90,7 +90,7 @@
     ["Package"]="API",
   },
   ["darkfile"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/api/darkfile.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/api/darkfile.lua",
     ["Version"]=1.101,
     ["Type"]="api",
     ["Name"]="Outraged Security .INC FILE API",
@@ -99,7 +99,7 @@
     ["Package"]="API",
   },
   ["screen"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/screen.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/screen.lua",
     ["Version"]=3.361,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC Screen",
@@ -108,7 +108,7 @@
     ["Package"]="Standalone",
   },
   ["chat"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/chat.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/chat.lua",
     ["Version"]=1.51,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC Secure Chat",
@@ -117,7 +117,7 @@
     ["Package"]="Standalone",
   },
   ["darkbuttons"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/darkbuttons.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/darkbuttons.lua",
     ["Version"]=1.231,
     ["Type"]="program",
     ["Name"]="Outraged Security Buttons",
@@ -126,7 +126,7 @@
     ["Package"]="Standalone",
   },
   ["turt"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/turt.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/turt.lua",
     ["Version"]=1.121,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC Inturtlpler",
@@ -135,7 +135,7 @@
     ["Package"]="Standalone",
   },
   ["stargatetouch"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/stargatetouch.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/stargatetouch.lua",
     ["Version"]=1.204,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC Stargate Touch Program",
@@ -144,7 +144,7 @@
     ["Package"]="Stargate",
   },
   ["darkretriever"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/darkretriever.lua",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/darkretriever.lua",
     ["Version"]=2.12,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC Retriever",
@@ -153,7 +153,7 @@
     ["Package"]="Standalone",
   },
     ["sign"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/signs/sign",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/signs/sign",
     ["Version"]=2.12,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC Signs",
@@ -162,7 +162,7 @@
     ["Package"]="Standalone",
   },
       ["setup"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/SecurePdaDoor/SecureDoor",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/SecurePdaDoor/SecureDoor",
     ["Version"]=2.12,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC PDA Secure Door",
@@ -171,7 +171,7 @@
     ["Package"]="Standalone",
    },
          ["ink"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/notepad/ink",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/notepad/ink",
     ["Version"]=2.16,
     ["Type"]="program",
     ["Name"]="Outraged Security .INC Office Word Software",
@@ -180,7 +180,7 @@
     ["Package"]="Standalone",
    },
             ["Autorun"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/games/Autorun/Autorun",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/games/Autorun/Autorun",
     ["Version"]=2.16,
     ["Type"]="program",
     ["Name"]="Autorun 2020 the game",
@@ -189,7 +189,7 @@
     ["Package"]="Games",
    },
               ["BrickBreaker"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/games/BrickBreaker/BrickBreaker",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/games/BrickBreaker/BrickBreaker",
     ["Version"]=2.16,
     ["Type"]="program",
     ["Name"]="BrickBreaker the game",
@@ -198,7 +198,7 @@
     ["Package"]="Games",
    },
                  ["CookieClicker"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/games/CookieClicker/CookieClicker",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/games/CookieClicker/CookieClicker",
     ["Version"]=2.16,
     ["Type"]="program",
     ["Name"]="CookieClicker the game",
@@ -207,7 +207,7 @@
     ["Package"]="Games",
    },
                     ["LoadingSimulator"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/games/LoadingSimulator/LoadingSimulator",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/games/LoadingSimulator/LoadingSimulator",
     ["Version"]=2.16,
     ["Type"]="program",
     ["Name"]="Loading Simulator the game",
@@ -216,7 +216,7 @@
     ["Package"]="Games",
    },
                     ["MinePowered10"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/games/MinePowered10/Minepowered",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/games/MinePowered10/Minepowered",
     ["Version"]=2.16,
     ["Type"]="program",
     ["Name"]="Mine Powered 10 the only game launcher 2020",
@@ -225,7 +225,7 @@
     ["Package"]="Games",
    },
                     ["Pong"]={
-    ["GitURL"]="https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/games/Pong/pong",
+    ["GitURL"]="https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/games/Pong/pong",
     ["Version"]=2.16,
     ["Type"]="program",
     ["Name"]="Pong the game",
