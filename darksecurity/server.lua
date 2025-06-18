@@ -5,7 +5,7 @@ term.setCursorPos(1,1)
 if fs.exists("dark") == false then
   print("Missing OSI API")
   print("Attempting to download...")
-  status, getGit = pcall(http.get, "https://raw.githubusercontent.com/recklessmetro/darkprograms/darkprograms/darksecurity/api/dark.lua")
+  status, getGit = pcall(http.get, "https://raw.githubusercontent.com/recklessmetro/darkprograms/refs/heads/darkprograms/api/dark.lua")
   if not status then
     print("\nFailed to get OSI API")
     print("Error: ".. getGit)
