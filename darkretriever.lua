@@ -197,7 +197,7 @@ function selection(no,list,totpage)
   term.write("P:" .. page + 1 .. "/" .. totpage)
   
   -- Website on right
-  term.setCursorPos(x - 21, y)
+  term.setCursorPos(x - 20, y)
   term.setTextColor(colors.green)
   term.write("BY RECKLESS-METRO.COM")
 end
@@ -248,7 +248,7 @@ function runMenu()
       header("DARKPROGRAMS PACKAGE MANAGER", "V" .. Version, "PKG:" .. os.getComputerID())
       
       tc("yellow","black")
-      writeC("Press 'h' for help, 'q' to quit.", 2)
+      writeC("Press 'h' for help, 'q' to quit.", 4)
       tc("white","black")
       
     elseif level == 2 then
