@@ -337,7 +337,7 @@ function runMenu()
         term.setTextColor(colors.green)
         term.write("#")
         term.setTextColor(colors.white)
-        sleep(0.05)
+        sleep(0.1)
       end
       
       status = getUrlFile(cat[rawName[pro]].GitURL)
