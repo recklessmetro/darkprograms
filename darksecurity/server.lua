@@ -112,23 +112,27 @@ function header(text, lText, rText)
   else
     co = "blue"
   end
-  dark.printL("-", 1, nil, co, co)
-  dark.printA("|", x, 2, nil, co, co)
-  dark.printA("|", 1, 2, nil, co, co)
-  dark.printC(string.rep(" ", x), 2, nil, "white", co)
-  if lText then dark.printA(lText, 1, 2, nil, "white", co) end
-  if rText then dark.printA(rText, x - #rText, 2, nil, "white", co) end
-  dark.printC(text, 2, nil, "yellow", co)
-  dark.printL("-", 3, 5, co, co)
+  -- Title bar
+  dark.printC(string.rep(" ", x), 1, nil, "white", co)
+  dark.printC(text, 1, nil, "white", co)
+  if lText then dark.printA(lText, 2, 1, nil, "lightBlue", co) end
+  if rText then dark.printA(rText, x - #rText - 1, 1, nil, "lightBlue", co) end
+  
+  -- Menu bar
+  dark.printC(string.rep(" ", x), 2, nil, "black", "lightGray")
+  dark.printA("Database", 2, 2, nil, "black", "lightGray")
+  dark.printA("Security", 12, 2, nil, "black", "lightGray")
+  dark.printA("Tools", 22, 2, nil, "black", "lightGray")
+  dark.printA("View", 29, 2, nil, "black", "lightGray")
+  
+  -- Separator
+  dark.printC(string.rep(" ", x), 3, nil, "gray", "gray")
 end
 function footer()
-  if debugMode and (debugMode == true) then
-    co = "red"
-  else
-    co = "blue"
-  end
-  dark.printL("-", y, nil, co, co)
-  dark.printA("by OutragedMetro", x-13, y, nil, "red", co)
+  -- Status bar
+  dark.printC(string.rep(" ", x), y, nil, "white", "gray")
+  dark.printA("Server Online", 2, y, nil, "green", "gray")
+  dark.printA("Admin Mode", x-11, y, nil, "blue", "gray")
 end
 function displayTNameColumn(TName, Page, Extrater, Admin)
   if Extrater then
@@ -331,27 +335,24 @@ Co = {
     draw = function()
       Page = 0
       if debugMode and debugMode == true then
-        header("Debug mode enabled!", "V"..Version, "ID:".. os.getComputerID())
+        header("SECURITY SERVER - DEBUG MODE", "V"..Version, "SRV:".. os.getComputerID())
         Co.main.options = {"ids", "user_main", "pc_general", "secLev", "help", "log", "lua", "shell"}
       else
-        header("Welcome to the Server Control Panel", "V"..Version, "ID:".. os.getComputerID())
+        header("SECURITY CONTROL CENTER", "V"..Version, "SRV:".. os.getComputerID())
         Co.main.options = {"ids", "user_main", "pc_general", "secLev", "help"}
       end
-      printR("[1] Disk ID managment", 1)
-      printR("[2] User managment", 2)
-      printR("[3] Pc managment", 3)
-      printR("[4] Security Level Manager", 4)
-	    printR("[5] Help", 5)
+      printR("► [1] ACCESS CARD MANAGEMENT", 1)
+      printR("► [2] USER ACCOUNT MANAGEMENT", 2)
+      printR("► [3] TERMINAL MANAGEMENT", 3)
+      printR("► [4] SECURITY CLEARANCE CONTROL", 4)
+	    printR("► [5] SYSTEM INFORMATION", 5)
       print("")
       if debugMode and debugMode == true then 
-        printR("[6] Log", 6) 
-        printR("[7] Lua Command Prompt", 7) 
-        printR("[8] Shell", 8) 
+        printR("► [6] COMMUNICATION LOG", 6) 
+        printR("► [7] DIRECT SYSTEM ACCESS", 7) 
+        printR("► [8] COMMAND SHELL", 8) 
       end
-      dark.printL("-", y, nil, co, co)
-      dark.printA("by OutragedMetro", x-13, y, nil, "yellow", co)
-	    dark.printA("                 ", 1, y, nil, co, co)
-      dark.printA("Current Security Level: "..slevel, 1, y, nil, "white", co)
+      dark.printA("◆ CLEARANCE LEVEL: " .. slevel .. " ◆", 1, y-1, nil, "lime", "black")
     end,
   },
   ["log"] = {
@@ -400,7 +401,7 @@ Co = {
   ["ids"] = {
     draw = function()
       databaseLoad()
-      header("ID managment","[4]prevPage","[5]nextPage")
+      header("ACCESS CARD DATABASE","[4]PREV","[5]NEXT")
       regBut("[4]prevPage",1,2,4, co)
       regBut("[5]nextPage",x - 7,2,5, co)
       dark.printL("-", y-1, nil, co, co)
@@ -494,7 +495,7 @@ Co = {
   ["user_main"] = {
     draw = function()
       Page = 0
-      header("User Management")
+      header("USER ACCOUNT CONTROL")
       printR("[1] Main Menu", 1)
       print("")
       printR("[2] User Manager", 2)
@@ -508,7 +509,7 @@ Co = {
     draw = function()
       Page = 0
       databaseLoad()
-      header("General User Managment","[4]prevPage","[5]nextPage")
+      header("STANDARD USER ACCOUNTS","[4]PREV","[5]NEXT")
       regBut("[4]prevPage",1,2,4, co)
       regBut("[5]nextPage",x - 7,2,5, co)
       dark.printL("-", y-1, nil, co, co)
@@ -576,7 +577,7 @@ Co = {
     draw = function()
       Page = 0
       databaseLoad()
-      header("Admin Managment","[4]prevPage","[5]nextPage")
+      header("ADMINISTRATOR ACCOUNTS","[4]PREV","[5]NEXT")
       regBut("[4]prevPage",1,2,4, co)
       regBut("[5]nextPage",x - 7,2,5, co)
       dark.printL("-", y-1, nil, co, co)
@@ -637,7 +638,7 @@ Co = {
     draw = function()
       Page = 0
       databaseLoad()
-      header("Pc Whitelist","[4]prevPage","[5]nextPage")
+      header("AUTHORIZED TERMINALS","[4]PREV","[5]NEXT")
       regBut("[4]prevPage",1,2,4, co)
       regBut("[5]nextPage",x - 7,2,5, co)
       dark.printL("-", y-1, nil, co, co)
@@ -715,7 +716,7 @@ Co = {
   ["secLev"] = {
     draw = function()
       databaseLoad()
-      header("Security Level Manager")
+      header("SECURITY CLEARANCE MANAGER")
       printR("[1] Main Menu", 1)
       print("")
       print("Security Levels: ".. config.secLevels)
@@ -723,7 +724,7 @@ Co = {
       printR("[2] Select Level", 2)
       printR("[3] Modify Level Amount", 3)
       footer()
-      dark.printA("Current Security Level: "..slevel, 1, y, nil, "white", co)
+      dark.printA("◆ ACTIVE CLEARANCE: " .. slevel .. " ◆", 1, y-1, nil, "lime", "black")
     end,
     options = {"main","secLev_select","secLev_modify"}
   },

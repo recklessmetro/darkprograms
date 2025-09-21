@@ -46,18 +46,26 @@ function rednetReceiveE(TimeA)
   end
 end
 function header(text, lText, rText)
-  dark.printL("-", 1, nil, "blue", "blue")
-  dark.printA("|", x, 2, nil, "blue", "blue")
-  dark.printA("|", 1, 2, nil, "blue", "blue")
-  dark.printC(string.rep(" ", x), 2, nil, "white", "blue")
-  if lText then dark.printA(lText, 1, 2, nil, "white", "blue") end
-  if rText then dark.printA(rText, x - #rText, 2, nil, "white", "blue") end
-  dark.printC(text, 2, nil, "white", "blue")
-  dark.printL("-", 3, 5, "blue", "blue")
+  -- Title bar
+  dark.printC(string.rep(" ", x), 1, nil, "white", "blue")
+  dark.printC(text, 1, nil, "white", "blue")
+  if lText then dark.printA(lText, 2, 1, nil, "lightBlue", "blue") end
+  if rText then dark.printA(rText, x - #rText - 1, 1, nil, "lightBlue", "blue") end
+  
+  -- Menu bar
+  dark.printC(string.rep(" ", x), 2, nil, "black", "lightGray")
+  dark.printA("File", 2, 2, nil, "black", "lightGray")
+  dark.printA("Settings", 8, 2, nil, "black", "lightGray")
+  dark.printA("Help", 18, 2, nil, "black", "lightGray")
+  
+  -- Separator line
+  dark.printC(string.rep(" ", x), 3, nil, "gray", "gray")
 end
 function footer()
-  dark.printL("-", y, nil, "blue", "blue")
-  dark.printA("by OutragedMetro", x-13, y, nil, "red", "blue")
+  -- Status bar
+  dark.printC(string.rep(" ", x), y, nil, "white", "gray")
+  dark.printA("Ready", 2, y, nil, "black", "gray")
+  dark.printA("Secure Connection", x-17, y, nil, "green", "gray")
 end
 function keycard_mainProgram()
   while true do
@@ -94,15 +102,25 @@ function userandpassword_mainProgram()
     com.area = tonumber(config.securityLevel)
     
     term.clear() term.setCursorPos(1,1)
+    header(config.tLabel, "Connected", "Level " .. config.securityLevel)
     footer()
-    header(config.tLabel)
-    print("") print("")
     
-    write(">  Username: ") 
+    -- Login panel
+    dark.printC(string.rep(" ", 30), 6, nil, "white", "white")
+    dark.printC("User Authentication", 6, nil, "black", "white")
+    for i = 7, 12 do
+      dark.printC(string.rep(" ", 30), i, nil, "black", "white")
+    end
+    
+    dark.printA("Username:", math.floor(x/2) - 13, 8, nil, "black", "white")
+    dark.printC(string.rep(" ", 20), 9, nil, "black", "lightGray")
+    term.setCursorPos(math.floor(x/2) - 9, 9)
     status, User = pcall(read)
     com.userQuery = string.lower(User)
     
-    write(">  Password: ") 
+    dark.printA("Password:", math.floor(x/2) - 13, 10, nil, "black", "white")
+    dark.printC(string.rep(" ", 20), 11, nil, "black", "lightGray")
+    term.setCursorPos(math.floor(x/2) - 9, 11)
     status, password = pcall(read, "*")
     com.passQuery = password
     
@@ -116,10 +134,14 @@ function userandpassword_mainProgram()
       sleep(2)
       else
         if MES == "#granted" then
-          dark.printC("Correct", 5, 5)
+          dark.printC("Access Granted", 13, nil, "green", "white")
+          dark.printC("Door Unlocked", 14, nil, "blue", "white")
           rs.setOutput(config.doorside, true)
           sleep(config.pulseTime)
           rs.setOutput(config.doorside, false)
+        else
+          dark.printC("Access Denied", 13, nil, "red", "white")
+          sleep(2)
         end
       end
     end
@@ -146,23 +168,25 @@ if fs.exists(".DarkC_conf") == false then
   
   term.clear()
   term.setCursorPos(1,1)
-  header("Outraged Security Client Setup")
+  header("SECURE TERMINAL INITIALIZATION", "SETUP", "CONFIG")
   
-  print("Computer's id is ".. os.getComputerID())
+  dark.printC("◆ TERMINAL ID: " .. os.getComputerID() .. " ◆", 5, nil, "cyan", "black")
+  print("")
   while true do
-    write("\nPlease type the server's computer id: ")
+    dark.printA("► SERVER ID:", 1, nil, "yellow", "black")
+    write(" ")
     config.serverID = tonumber(io.read())
-    print("\nPinging server...")
+    dark.printC("► ESTABLISHING CONNECTION...", nil, nil, "orange", "black")
     sleep(1)
     com = {}
     com.ping = true
     rednetSendE(config.serverID, textutils.serialize(com))
     s,m,d = rednetReceiveE(2)
     if m and m == "#pong" then
-      print("Server responded, test complete.")
+      dark.printC("✓ CONNECTION ESTABLISHED", nil, nil, "green", "black")
       break
     else
-      print("\nNo response, this could be down to a number of things...")
+      dark.printC("✗ CONNECTION FAILED", nil, nil, "red", "black")
       print("\nTry again?")
       write("y / n: ")
       ans = read()
