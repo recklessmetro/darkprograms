@@ -185,11 +185,21 @@ function selection(no,list,totpage)
   term.setBackgroundColor(colors.black)
   term.setTextColor(colors.white)
   
-  -- Page counter in footer left
+  -- Create footer with both page counter and website
+  term.setBackgroundColor(colors.gray)
+  term.setTextColor(colors.white)
   term.setCursorPos(1, y)
-  term.setBackgroundColor(colors.black)
+  term.write(string.rep(" ", x))
+  
+  -- Page counter on left
+  term.setCursorPos(1, y)
   term.setTextColor(colors.orange)
   term.write("P:" .. page + 1 .. "/" .. totpage)
+  
+  -- Website on right
+  term.setCursorPos(x - 21, y)
+  term.setTextColor(colors.green)
+  term.write("BY RECKLESS-METRO.COM")
 end
 
 function draw(tbl)
