@@ -61,8 +61,8 @@ end
 function footer()
   -- Status bar
   dark.printL(" ", y, nil, "white", "gray")
-  dark.printA("Ready", 1, y, nil, "black", "gray")
-  dark.printC(config.tLabel, y, nil, "black", "gray")
+  dark.printA("Ready", 1, y, nil, "green", "gray")
+  dark.printC("Server: " .. config.serverID, y, nil, "yellow", "gray")
   dark.printA("Secure Connection", x-16, y, nil, "green", "gray")
 end
 function keycard_mainProgram()
@@ -121,13 +121,13 @@ function userandpassword_mainProgram()
     
     -- Input fields
     dark.printA("Username:", startX + 2, 9, nil, "black", "white")
-    dark.printA(string.rep(" ", 18), startX + 7, 10, nil, "black", "lightGray")
+    dark.printA(string.rep(" ", 18), startX + 7, 10, nil, "white", "black")
     term.setCursorPos(startX + 8, 10)
     status, User = pcall(read)
     com.userQuery = string.lower(User)
     
     dark.printA("Password:", startX + 2, 11, nil, "black", "white")
-    dark.printA(string.rep(" ", 18), startX + 7, 12, nil, "black", "lightGray")
+    dark.printA(string.rep(" ", 18), startX + 7, 12, nil, "white", "black")
     term.setCursorPos(startX + 8, 12)
     status, password = pcall(read, "*")
     com.passQuery = password
@@ -281,7 +281,7 @@ config = dark.db.load(".DarkC_conf")
 -- Loading animation like server
 term.clear()
 term.setCursorPos(1,1)
-dark.splash(1.5, "Powered by Outraged Security Gui")
+dark.splash(1.5, "Powered by reckless-metro.com")
 
 if config.tType == "keycard" then
   parallel.waitForAll(keycard_mainProgram, stealthUpdate)
