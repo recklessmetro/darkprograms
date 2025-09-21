@@ -94,7 +94,7 @@ local function header(text, lText, rText)
   term.write(string.rep(" ", x))
   term.setCursorPos(1, y)
   term.setTextColor(colors.green)
-  term.write("[ONLINE]")
+  term.write("[BY RECKLESS-METRO.COM]")
   term.setCursorPos(11, y)
   term.setTextColor(colors.blue)
   term.write("Package Manager")
@@ -358,4 +358,4 @@ function runMenu()
   end
 end
 
-runMenu()
+runMenu()nu()
