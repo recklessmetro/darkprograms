@@ -98,7 +98,7 @@ local function footer()
   term.setCursorPos(1, y)
   term.setTextColor(colors.green)
   term.write("[BY RECKLESSMETRO]")
-  term.setCursorPos(11, y)
+  term.setCursorPos(20, y)
   term.setTextColor(colors.blue)
   term.write("Package Manager")
 end
