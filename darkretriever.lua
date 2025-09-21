@@ -247,7 +247,7 @@ function runMenu()
       header("DARKPROGRAMS PACKAGE MANAGER", "V" .. Version, "PKG:" .. os.getComputerID())
       
       tc("yellow","black")
-      writeC("Press 'h' for help, 'q' to quit.", 4)
+      writeC("Press 'h' for help, 'q' to quit.", 6)
       tc("white","black")
       
     elseif level == 2 then
