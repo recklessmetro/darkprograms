@@ -200,6 +200,10 @@ function selection(no,list,totpage)
   term.setCursorPos(x - 21, y)
   term.setTextColor(colors.green)
   term.write("BY RECKLESS-METRO.COM")
+  
+  -- Reset background to black
+  term.setBackgroundColor(colors.black)
+  term.setTextColor(colors.white)
 end
 
 function draw(tbl)
