@@ -87,17 +87,19 @@ local function header(text, lText, rText)
   term.setCursorPos(1, 3)
   term.write(string.rep(" ", x))
   
-  -- Footer
+  term.setBackgroundColor(colors.black)
+  term.setTextColor(colors.white)
+end
+
+local function footer()
+  -- Gray footer bar
   term.setBackgroundColor(colors.gray)
   term.setTextColor(colors.white)
   term.setCursorPos(1, y)
   term.write(string.rep(" ", x))
-  term.setCursorPos(x - 22, y)
+  term.setCursorPos(x - 21, y)
   term.setTextColor(colors.green)
   term.write("BY RECKLESS-METRO.COM")
-  
-  term.setBackgroundColor(colors.black)
-  term.setTextColor(colors.white)
 end
 
 local function gitUpdate(ProgramName, Filename, ProgramVersion)
@@ -185,7 +187,7 @@ function selection(no,list,totpage)
   
   -- Page counter in footer left
   term.setCursorPos(1, y)
-  term.setBackgroundColor(colors.gray)
+  term.setBackgroundColor(colors.black)
   term.setTextColor(colors.orange)
   term.write("P:" .. page + 1 .. "/" .. totpage)
 end
