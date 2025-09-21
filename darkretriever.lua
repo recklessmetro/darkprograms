@@ -48,19 +48,24 @@ function term.write(text)
   term.oldWrite(text)
 end
 
-local function header(text)
-  -- Title bar
+local function header(text, lText, rText)
+  -- Title bar exactly like server
   term.setBackgroundColor(colors.blue)
   term.setTextColor(colors.white)
   term.setCursorPos(1, 1)
   term.write(string.rep(" ", x))
   term.setCursorPos(math.floor((x - #text) / 2) + 1, 1)
   term.write(text)
-  term.setCursorPos(1, 1)
-  term.setTextColor(colors.lightBlue)
-  term.write("V" .. Version)
-  term.setCursorPos(x - 8, 1)
-  term.write("PKG:" .. os.getComputerID())
+  if lText then 
+    term.setCursorPos(1, 1)
+    term.setTextColor(colors.lightBlue)
+    term.write(lText)
+  end
+  if rText then 
+    term.setCursorPos(x - #rText + 1, 1)
+    term.setTextColor(colors.lightBlue)
+    term.write(rText)
+  end
   
   -- Menu bar
   term.setBackgroundColor(colors.lightGray)
@@ -82,21 +87,22 @@ local function header(text)
   term.setCursorPos(1, 3)
   term.write(string.rep(" ", x))
   
-  -- Footer
+end
+
+local function footer()
+  -- Status bar exactly like server
   term.setBackgroundColor(colors.gray)
   term.setTextColor(colors.white)
   term.setCursorPos(1, y)
   term.write(string.rep(" ", x))
   term.setCursorPos(1, y)
   term.setTextColor(colors.green)
-  term.write("[ONLINE]")
+  term.write("[BY RECKLESSMETRO]")
   term.setCursorPos(11, y)
   term.setTextColor(colors.blue)
   term.write("Package Manager")
-  
-  term.setBackgroundColor(colors.black)
-  term.setTextColor(colors.white)
-end
+
+
 
 local function gitUpdate(ProgramName, Filename, ProgramVersion)
   if http then
@@ -229,20 +235,24 @@ function runMenu()
     cs()
     if level == 1 then
       list, totpage, mod = draw(menu)
-      header("Authors")
+      header("DARKPROGRAMS PACKAGE MANAGER", "V" .. Version)
       
       tc("yellow","black")
       writeC("Press 'h' for help, 'q' to quit.", 2)
       tc("white","black")
+      footer()
       
     elseif level == 2 then
       list, totpage, mod = draw(menu[auna])
-      header("Packages")
+      header("PACKAGE SELECTION", "V" .. Version)
+      footer()
     elseif level == 3 then
       list, totpage, mod = draw(menu[auna][pkg])
-      header("Programs")
+      header("PROGRAM SELECTION", "V" .. Version)
+      footer()
     elseif level == 4 then
-      header("Program Data")
+      header("PROGRAM INFORMATION", "V" .. Version)
+      footer()
       list, totpage, mod = draw(menu[auna][pkg][pro])
     end
     
@@ -252,7 +262,8 @@ function runMenu()
     
     if key == keys.h then
       cs()
-      header("Help")
+      header("HELP & DOCUMENTATION", "V" .. Version)
+      footer()
       term.setCursorPos(1, ind)
       print("Use the up and down arrows to move through the list.")
       print("Use the right arrow to enter a menu item and the left arrow to exit.")
