@@ -55,7 +55,27 @@ function footer()
   term.write("Setup Wizard")
   term.setCursorPos(x-8, y)
   term.setTextColor(colors.orange)
-  term.write("ID:" .. os.getComputerID())
+  term.write("ID:" .. os.getComputerI-- Get screen dimensions
+local x, y = term.getSize()
+
+-- Header function like server
+function header(title, version, mode)
+  term.setBackgroundColor(colors.blue)
+  term.setTextColor(colors.white)
+  term.setCursorPos(1, 1)
+  term.clearLine()
+  term.write(" " .. title)
+  term.setCursorPos(x - string.len(version) - string.len(mode) - 2, 1)
+  term.write(version .. " " .. mode)
+end
+
+-- Footer function like server
+function footer()
+  term.setBackgroundColor(colors.gray)
+  term.setTextColor(colors.black)
+  term.setCursorPos(1, y)
+  term.clearLine()
+  term.write(" DarkPrograms Security Suite - Professional Installation")
 end
 
 -- Menu option function like server
