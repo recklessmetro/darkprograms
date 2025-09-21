@@ -308,16 +308,36 @@ function runMenu()
     
     if key == keys.enter and level == 4 then
       cs()
-      p = cat[pro]
-      writeC("Downloading ".. cat[rawName[pro]].Name .. " to /" .. rawName[pro], y/2)
+      header("DOWNLOADING PROGRAM", "V" .. Version)
+      
+      -- Download animation
+      local progName = cat[rawName[pro]].Name
+      writeC("Downloading: " .. progName, y/2 - 2)
+      writeC("Target: /" .. rawName[pro], y/2 - 1)
+      
+      -- Progress bar
+      local barWidth = 30
+      local barY = y/2 + 1
+      term.setCursorPos((x - barWidth) / 2, barY)
+      term.write("[" .. string.rep(" ", barWidth) .. "]")
+      
+      -- Animate download
+      for i = 1, barWidth do
+        term.setCursorPos((x - barWidth) / 2 + i, barY)
+        term.setTextColor(colors.green)
+        term.write("#")
+        term.setTextColor(colors.white)
+        sleep(0.05)
+      end
+      
       status = getUrlFile(cat[rawName[pro]].GitURL)
-      sleep(1)
       if status then
         writeFile("/".. rawName[pro], status)
       end
       
       cs()
-      writeC("Success!", y/2)
+      header("DOWNLOAD COMPLETE", "V" .. Version)
+      writeC("Successfully downloaded: " .. progName, y/2)
       sleep(1)
       
       repeat
@@ -329,6 +349,7 @@ function runMenu()
       
       if answer == "y" then
         cs()
+        header("CREATING STARTUP", "V" .. Version)
         writeC("Writing startup script...", y/2)
         
         star = fs.open("/startup", "w")
@@ -358,4 +379,4 @@ function runMenu()
   end
 end
 
-runMenu()nu()
+runMenu()
