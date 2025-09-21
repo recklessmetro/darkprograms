@@ -101,8 +101,7 @@ local function footer()
   term.setCursorPos(11, y)
   term.setTextColor(colors.blue)
   term.write("Package Manager")
-
-
+end
 
 local function gitUpdate(ProgramName, Filename, ProgramVersion)
   if http then
