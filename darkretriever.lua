@@ -185,24 +185,19 @@ function selection(no,list,totpage)
   term.setBackgroundColor(colors.black)
   term.setTextColor(colors.white)
   
-  -- Footer like client.lua
-  term.setBackgroundColor(colors.gray)
-  term.setTextColor(colors.white)
-  term.setCursorPos(1, y)
-  term.write(string.rep(" ", x))
+  -- Footer without gray background
+  term.setBackgroundColor(colors.black)
   
-  -- Page counter on left (like "Ready")
+  -- Page counter on left
   term.setCursorPos(1, y)
-  term.setTextColor(colors.black)
+  term.setTextColor(colors.orange)
   term.write("P:" .. page + 1 .. "/" .. totpage)
   
-  -- Website on right (like "Secure Connection")
+  -- Website on right
   term.setCursorPos(x - 21, y)
   term.setTextColor(colors.green)
   term.write("BY RECKLESS-METRO.COM")
   
-  -- Reset background to black
-  term.setBackgroundColor(colors.black)
   term.setTextColor(colors.white)
 end
 
@@ -352,7 +347,8 @@ function runMenu()
       
       cs()
       header("DOWNLOAD COMPLETE", "V" .. Version)
-      writeC("Successfully downloaded: " .. progName, y/2)
+      writeC("Successfully downloaded:", y/2 - 1)
+      writeC(progName, y/2)
       sleep(1)
       
       repeat
