@@ -185,19 +185,19 @@ function selection(no,list,totpage)
   term.setBackgroundColor(colors.black)
   term.setTextColor(colors.white)
   
-  -- Create footer with both page counter and website
+  -- Footer like client.lua
   term.setBackgroundColor(colors.gray)
   term.setTextColor(colors.white)
   term.setCursorPos(1, y)
   term.write(string.rep(" ", x))
   
-  -- Page counter on left
+  -- Page counter on left (like "Ready")
   term.setCursorPos(1, y)
-  term.setTextColor(colors.orange)
+  term.setTextColor(colors.black)
   term.write("P:" .. page + 1 .. "/" .. totpage)
   
-  -- Website on right
-  term.setCursorPos(x - 20, y)
+  -- Website on right (like "Secure Connection")
+  term.setCursorPos(x - 21, y)
   term.setTextColor(colors.green)
   term.write("BY RECKLESS-METRO.COM")
 end
