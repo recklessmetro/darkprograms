@@ -174,7 +174,7 @@ csel = 1 --Current selected
 osel = {1} --breadcrumb
 
 page = 0
-ind = 5 --Y indent (below header)
+ind = 4 --Y indent (below header separator)
 ava = y - ind --Available space
 level = 1
 
@@ -247,7 +247,7 @@ function runMenu()
       header("DARKPROGRAMS PACKAGE MANAGER", "V" .. Version, "PKG:" .. os.getComputerID())
       
       tc("yellow","black")
-      writeC("Press 'h' for help, 'q' to quit.", 5)
+      writeC("Press 'h' for help, 'q' to quit.", 4)
       tc("white","black")
       
     elseif level == 2 then
@@ -268,7 +268,7 @@ function runMenu()
     if key == keys.h then
       cs()
       header("HELP & DOCUMENTATION", "V" .. Version, "PKG:" .. os.getComputerID())
-      term.setCursorPos(1, 5)
+      term.setCursorPos(1, 4)
       print("Use the up and down arrows to move through the list.")
       print("Use the right arrow to enter a menu item and the left arrow to exit.")
       print("")
