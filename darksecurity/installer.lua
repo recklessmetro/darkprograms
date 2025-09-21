@@ -310,7 +310,7 @@ function installProgram(programType)
   term.setTextColor(colors.yellow)
   print("> Connecting to download server...")
   
-  local status, getGit = pcall(http.get, "https://raw.githubusercontent.com/rservices/darkprograms/darkprograms/programVersions")
+  local status, getGit = pcall(http.get, "https://raw.githubusercontent.com/recklessmetro/darkprograms/darkprograms/programVersions")
   if not status then
     term.setTextColor(colors.red)
     print("[ERROR] Failed to connect to server")
