@@ -178,17 +178,23 @@ page = 0
 ind = 3 --Y indent
 ava = y - ind --Available space
 level = 1
+mod = 0
+tpages = 1
+list = {}
+totpage = 1
 
 function selection(no,list,totpage)
-  term.setCursorPos(1, (no - mod) + (ind - 1))
-  tc("yellow")
-  term.write("[".. list[no] .. "]")
-  term.setBackgroundColor(colors.black)
-  term.setTextColor(colors.white)
-  term.setCursorPos(x - 14, y)
-  term.setBackgroundColor(colors.gray)
-  term.setTextColor(colors.orange)
-  term.write("P:" .. page + 1 .. "/" .. totpage)
+  if list and list[no] then
+    term.setCursorPos(1, (no - (mod or 0)) + (ind - 1))
+    tc("yellow")
+    term.write("[".. list[no] .. "]")
+    term.setBackgroundColor(colors.black)
+    term.setTextColor(colors.white)
+    term.setCursorPos(x - 14, y)
+    term.setBackgroundColor(colors.gray)
+    term.setTextColor(colors.orange)
+    term.write("P:" .. page + 1 .. "/" .. totpage)
+  end
 end
 
 function draw(tbl)
