@@ -357,8 +357,24 @@ function runMenu()
       
       repeat
         cs()
-        writeC("Would you like to generate a startup script? ", y/2)
-        writeC("Y / N : ", y/2 + 1)
+        header("STARTUP CONFIGURATION", "V" .. Version)
+        
+        writeC("Would you like to generate a startup script?", y/2 - 1)
+        writeC("This will automatically run the program on boot.", y/2)
+        
+        -- Options box
+        local optY = y/2 + 2
+        term.setCursorPos((x - 20) / 2, optY)
+        term.setTextColor(colors.cyan)
+        term.write("+" .. string.rep("-", 18) .. "+")
+        term.setCursorPos((x - 20) / 2, optY + 1)
+        term.write("|  [Y] Yes  [N] No  |")
+        term.setCursorPos((x - 20) / 2, optY + 2)
+        term.write("+" .. string.rep("-", 18) .. "+")
+        
+        term.setCursorPos((x - 12) / 2, optY + 4)
+        term.setTextColor(colors.white)
+        term.write("Choice: ")
         answer = string.lower(read())
       until answer == "y" or answer == "n"
       
