@@ -174,7 +174,7 @@ csel = 1 --Current selected
 osel = {1} --breadcrumb
 
 page = 0
-ind = 4 --Y indent (below header separator)
+ind = 6 --Y indent (below header and help text)
 ava = y - ind --Available space
 level = 1
 
