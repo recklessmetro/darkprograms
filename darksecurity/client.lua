@@ -47,25 +47,22 @@ function rednetReceiveE(TimeA)
 end
 function header(text, lText, rText)
   -- Title bar
-  dark.printC(string.rep(" ", x), 1, nil, "white", "blue")
+  dark.printL(" ", 1, nil, "white", "blue")
   dark.printC(text, 1, nil, "white", "blue")
-  if lText then dark.printA(lText, 2, 1, nil, "lightBlue", "blue") end
-  if rText then dark.printA(rText, x - #rText - 1, 1, nil, "lightBlue", "blue") end
+  if lText then dark.printA(lText, 1, 1, nil, "lightBlue", "blue") end
+  if rText then dark.printA(rText, x - #rText + 1, 1, nil, "lightBlue", "blue") end
   
   -- Menu bar
-  dark.printC(string.rep(" ", x), 2, nil, "black", "lightGray")
-  dark.printA("File", 2, 2, nil, "black", "lightGray")
-  dark.printA("Settings", 8, 2, nil, "black", "lightGray")
-  dark.printA("Help", 18, 2, nil, "black", "lightGray")
+  dark.printL(" ", 2, nil, "black", "lightGray")
   
-  -- Separator line
-  dark.printC(string.rep(" ", x), 3, nil, "gray", "gray")
+  -- Separator
+  dark.printL("-", 3, nil, "gray", "black")
 end
 function footer()
   -- Status bar
-  dark.printC(string.rep(" ", x), y, nil, "white", "gray")
-  dark.printA("Ready", 2, y, nil, "black", "gray")
-  dark.printA("Secure Connection", x-17, y, nil, "green", "gray")
+  dark.printL(" ", y, nil, "white", "gray")
+  dark.printA("Ready", 1, y, nil, "black", "gray")
+  dark.printA("Secure Connection", x-16, y, nil, "green", "gray")
 end
 function keycard_mainProgram()
   while true do
@@ -105,42 +102,53 @@ function userandpassword_mainProgram()
     header(config.tLabel, "Connected", "Level " .. config.securityLevel)
     footer()
     
-    -- Login panel
-    dark.printC(string.rep(" ", 30), 6, nil, "white", "white")
-    dark.printC("User Authentication", 6, nil, "black", "white")
-    for i = 7, 12 do
-      dark.printC(string.rep(" ", 30), i, nil, "black", "white")
-    end
+    -- Login panel with border
+    local panelWidth = 32
+    local startX = math.floor((x - panelWidth) / 2)
     
-    dark.printA("Username:", math.floor(x/2) - 13, 8, nil, "black", "white")
-    dark.printC(string.rep(" ", 20), 9, nil, "black", "lightGray")
-    term.setCursorPos(math.floor(x/2) - 9, 9)
+    -- Panel border (taller)
+    dark.printA("+" .. string.rep("-", panelWidth-2) .. "+", startX, 5, nil, "cyan", "black")
+    for i = 6, 14 do
+      dark.printA("|", startX, i, nil, "cyan", "black")
+      dark.printA("|", startX + panelWidth - 1, i, nil, "cyan", "black")
+      dark.printC(string.rep(" ", panelWidth-2), i, nil, "white", "white")
+    end
+    dark.printA("+" .. string.rep("-", panelWidth-2) .. "+", startX, 14, nil, "cyan", "black")
+    
+    -- Panel title (with blank line above)
+    dark.printC("USER AUTHENTICATION", 7, nil, "blue", "white")
+    
+    -- Input fields
+    dark.printA("Username:", startX + 2, 9, nil, "black", "white")
+    dark.printA(string.rep(" ", 18), startX + 7, 10, nil, "black", "lightGray")
+    term.setCursorPos(startX + 8, 10)
     status, User = pcall(read)
     com.userQuery = string.lower(User)
     
-    dark.printA("Password:", math.floor(x/2) - 13, 10, nil, "black", "white")
-    dark.printC(string.rep(" ", 20), 11, nil, "black", "lightGray")
-    term.setCursorPos(math.floor(x/2) - 9, 11)
+    dark.printA("Password:", startX + 2, 11, nil, "black", "white")
+    dark.printA(string.rep(" ", 18), startX + 7, 12, nil, "black", "lightGray")
+    term.setCursorPos(startX + 8, 12)
     status, password = pcall(read, "*")
     com.passQuery = password
     
     SendString = textutils.serialize(com)
     
     if ((User ~= nil) and (password ~= nil)) then
+      -- Show authenticating message
+      dark.printC("Authenticating...", 13, nil, "orange", "white")
       rednetSendE(config.serverID, SendString)
       ID, MES = rednetReceiveE(2)
       if MES == nil then
-      print("\nWrong or no response from server.")
+      dark.printC("[ERROR] Server Timeout", 13, nil, "red", "white")
       sleep(2)
       else
         if MES == "#granted" then
-          dark.printC("Access Granted", 13, nil, "green", "white")
-          dark.printC("Door Unlocked", 14, nil, "blue", "white")
+          dark.printC("[SUCCESS] Access Granted", 13, nil, "green", "white")
           rs.setOutput(config.doorside, true)
           sleep(config.pulseTime)
           rs.setOutput(config.doorside, false)
         else
-          dark.printC("Access Denied", 13, nil, "red", "white")
+          dark.printC("[ERROR] Access Denied", 13, nil, "red", "white")
           sleep(2)
         end
       end
@@ -170,23 +178,23 @@ if fs.exists(".DarkC_conf") == false then
   term.setCursorPos(1,1)
   header("SECURE TERMINAL INITIALIZATION", "SETUP", "CONFIG")
   
-  dark.printC("◆ TERMINAL ID: " .. os.getComputerID() .. " ◆", 5, nil, "cyan", "black")
+  dark.printC("* TERMINAL ID: " .. os.getComputerID() .. " *", 5, nil, "cyan", "black")
   print("")
   while true do
-    dark.printA("► SERVER ID:", 1, nil, "yellow", "black")
+    dark.printA("> SERVER ID:", 1, nil, "yellow", "black")
     write(" ")
     config.serverID = tonumber(io.read())
-    dark.printC("► ESTABLISHING CONNECTION...", nil, nil, "orange", "black")
+    dark.printC("> ESTABLISHING CONNECTION...", nil, nil, "orange", "black")
     sleep(1)
     com = {}
     com.ping = true
     rednetSendE(config.serverID, textutils.serialize(com))
     s,m,d = rednetReceiveE(2)
     if m and m == "#pong" then
-      dark.printC("✓ CONNECTION ESTABLISHED", nil, nil, "green", "black")
+      dark.printC("+ CONNECTION ESTABLISHED", nil, nil, "green", "black")
       break
     else
-      dark.printC("✗ CONNECTION FAILED", nil, nil, "red", "black")
+      dark.printC("- CONNECTION FAILED", nil, nil, "red", "black")
       print("\nTry again?")
       write("y / n: ")
       ans = read()
@@ -268,6 +276,11 @@ if fs.exists(".DarkC_conf") == false then
 end
 
 config = dark.db.load(".DarkC_conf")
+
+-- Loading animation like server
+term.clear()
+term.setCursorPos(1,1)
+dark.splash(1.5, "Powered by Outraged Security Gui")
 
 if config.tType == "keycard" then
   parallel.waitForAll(keycard_mainProgram, stealthUpdate)
