@@ -62,6 +62,7 @@ function footer()
   -- Status bar
   dark.printL(" ", y, nil, "white", "gray")
   dark.printA("Ready", 1, y, nil, "black", "gray")
+  dark.printC(config.tLabel, y, nil, "black", "gray")
   dark.printA("Secure Connection", x-16, y, nil, "green", "gray")
 end
 function keycard_mainProgram()
