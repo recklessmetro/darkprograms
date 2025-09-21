@@ -87,10 +87,7 @@ local function header(text, lText, rText)
   term.setCursorPos(1, 3)
   term.write(string.rep(" ", x))
   
-end
-
-local function footer()
-  -- Status bar exactly like server
+  -- Footer
   term.setBackgroundColor(colors.gray)
   term.setTextColor(colors.white)
   term.setCursorPos(1, y)
@@ -101,8 +98,10 @@ local function footer()
   term.setCursorPos(11, y)
   term.setTextColor(colors.blue)
   term.write("Package Manager")
-
-
+  
+  term.setBackgroundColor(colors.black)
+  term.setTextColor(colors.white)
+end
 
 local function gitUpdate(ProgramName, Filename, ProgramVersion)
   if http then
@@ -235,24 +234,20 @@ function runMenu()
     cs()
     if level == 1 then
       list, totpage, mod = draw(menu)
-      header("DARKPROGRAMS PACKAGE MANAGER", "V" .. Version)
+      header("DARKPROGRAMS PACKAGE MANAGER", "V" .. Version, "PKG:" .. os.getComputerID())
       
       tc("yellow","black")
       writeC("Press 'h' for help, 'q' to quit.", 2)
       tc("white","black")
-      footer()
       
     elseif level == 2 then
       list, totpage, mod = draw(menu[auna])
-      header("PACKAGE SELECTION", "V" .. Version)
-      footer()
+      header("PACKAGE SELECTION", "V" .. Version, "PKG:" .. os.getComputerID())
     elseif level == 3 then
       list, totpage, mod = draw(menu[auna][pkg])
-      header("PROGRAM SELECTION", "V" .. Version)
-      footer()
+      header("PROGRAM SELECTION", "V" .. Version, "PKG:" .. os.getComputerID())
     elseif level == 4 then
-      header("PROGRAM INFORMATION", "V" .. Version)
-      footer()
+      header("PROGRAM INFORMATION", "V" .. Version, "PKG:" .. os.getComputerID())
       list, totpage, mod = draw(menu[auna][pkg][pro])
     end
     
@@ -262,8 +257,7 @@ function runMenu()
     
     if key == keys.h then
       cs()
-      header("HELP & DOCUMENTATION", "V" .. Version)
-      footer()
+      header("HELP & DOCUMENTATION", "V" .. Version, "PKG:" .. os.getComputerID())
       term.setCursorPos(1, ind)
       print("Use the up and down arrows to move through the list.")
       print("Use the right arrow to enter a menu item and the left arrow to exit.")
